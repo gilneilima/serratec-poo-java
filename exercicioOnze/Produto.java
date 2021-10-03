@@ -49,10 +49,28 @@ public abstract class Produto implements Venda{
 	
 	//Métodos
 	public double Vender(int quantidadeDeItens) {
-		return quantidadeDeItens;
+		double valorTotal = (this.getValor() * quantidadeDeItens);
+		if(this.getQuantidadeDeItens() < quantidadeDeItens) {
+			System.out.println("\nVenda NÃO realizada. Estoque insuficiente. " + 
+					this.getNome() + " - Estoque Atual: " + this.getQuantidadeDeItens() + ".");
+		}
+		else {
+			System.out.println("\nVenda Realizada! " + this.getNome() + ": " + quantidadeDeItens + 
+					" Unidades." + " Valor Total: R$" + valorTotal + ".");
+			quantidadeDeItens = this.getQuantidadeDeItens() - quantidadeDeItens;
+			setQuantidadeDeItens(quantidadeDeItens);
+		}
+		return valorTotal;
 	}
 	
+	
 	public double acrescentarEstoque(int quantidadeDeItens) {
+		System.out.println("\nEstoque Anterior: " + this.getQuantidadeDeItens() + ".");
+		System.out.println(this.getNome() + ": " + quantidadeDeItens + 
+				" Unidades. Adicionadas ao estoque.");
+		quantidadeDeItens = this.getQuantidadeDeItens() + quantidadeDeItens;
+		setQuantidadeDeItens(quantidadeDeItens);
+		System.out.println("Estoque Atual: " + this.getQuantidadeDeItens() + ".");
 		return quantidadeDeItens;
 	}
 
