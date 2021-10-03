@@ -7,9 +7,9 @@ public class TestaAtleta {
 		Pais pais1 = new Pais("Brasil");
 		Pais pais2 = new Pais("Espanha");
 		
-		Boxeador boxer1 = new Boxeador("Gilnei", 100.01, "Boxe", 1, pais1);
-		Boxeador boxer2 = new Boxeador("Rafael", 59.90, "Boxe", 1, pais2);
-		Boxeador boxer3 = new Boxeador("Diego", 93, "Boxe", 1, pais1);
+		Boxe boxer1 = new Boxe("Gilnei", 100.01, "Boxe", 1, pais1);
+		Boxe boxer2 = new Boxe("Rafael", 59.90, "Boxe", 1, pais2);
+		Boxe boxer3 = new Boxe("Diego", 93, "Boxe", 1, pais1);
 		
 		
 		System.out.println(boxer1.verificaSituacao());
