@@ -52,7 +52,7 @@ public abstract class Produto implements Venda{
 	@Override
 	public double Vender(int quantidadeDeItens) {
 		double valorTotal = (this.getValor() * quantidadeDeItens);
-		somaTotal += valorTotal;
+		this.somaTotal += valorTotal;
 		if(this.getQuantidadeDeItens() < quantidadeDeItens) {
 			System.out.println("\nVenda NÃO realizada. Estoque insuficiente. " + 
 					this.getNome() + " - Estoque Atual: " + this.getQuantidadeDeItens() + ".");
@@ -64,7 +64,7 @@ public abstract class Produto implements Venda{
 			setQuantidadeDeItens(quantidadeDeItens);
 		}
 		
-		return somaTotal;
+		return this.somaTotal;
 	}
 	
 	
