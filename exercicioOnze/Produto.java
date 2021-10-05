@@ -4,6 +4,7 @@ public abstract class Produto implements Venda{
 	private String nome;
 	private double valor;
 	private int quantidadeDeItens;
+	private double somaTotal;
 	
 	//Get Set
 	public String getNome() {
@@ -29,15 +30,15 @@ public abstract class Produto implements Venda{
 	public void setQuantidadeDeItens(int quantidadeDeItens) {
 		this.quantidadeDeItens = quantidadeDeItens;
 	}
+	
+	public double getsomaTotal() {
+		return somaTotal;
+	}
 
 	//Construtor
 	public Produto(String nome, double valor, int quantidadeDeItens) {
 		this.nome = nome;
 		this.valor = valor;
-		this.quantidadeDeItens = quantidadeDeItens;
-	}
-	
-	public Produto(int quantidadeDeItens) {
 		this.quantidadeDeItens = quantidadeDeItens;
 	}
 	
@@ -48,8 +49,10 @@ public abstract class Produto implements Venda{
 	}
 	
 	//Métodos
+	@Override
 	public double Vender(int quantidadeDeItens) {
 		double valorTotal = (this.getValor() * quantidadeDeItens);
+		somaTotal += valorTotal;
 		if(this.getQuantidadeDeItens() < quantidadeDeItens) {
 			System.out.println("\nVenda NÃO realizada. Estoque insuficiente. " + 
 					this.getNome() + " - Estoque Atual: " + this.getQuantidadeDeItens() + ".");
@@ -60,18 +63,18 @@ public abstract class Produto implements Venda{
 			quantidadeDeItens = this.getQuantidadeDeItens() - quantidadeDeItens;
 			setQuantidadeDeItens(quantidadeDeItens);
 		}
-		return valorTotal;
+		
+		return somaTotal;
 	}
 	
 	
 	public double acrescentarEstoque(int quantidadeDeItens) {
-		System.out.println("\nEstoque Anterior: " + this.getQuantidadeDeItens() + ".");
-		System.out.println(this.getNome() + ": " + quantidadeDeItens + 
-				" Unidades. Adicionadas ao estoque.");
+		System.out.println("\n" + this.nome + "\nEstoque Anterior: " + this.getQuantidadeDeItens() + ".");
+		System.out.println(quantidadeDeItens + " Unidades. Adicionadas ao estoque.");
 		quantidadeDeItens = this.getQuantidadeDeItens() + quantidadeDeItens;
 		setQuantidadeDeItens(quantidadeDeItens);
 		System.out.println("Estoque Atual: " + this.getQuantidadeDeItens() + ".");
 		return quantidadeDeItens;
 	}
-
+	
 }
